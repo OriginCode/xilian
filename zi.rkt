@@ -19,7 +19,7 @@
 (define/contract (string->zis fanqies)
   (-> string? (listof zi?))
   (filter-map
-    (lambda (str)
+    (λ (str)
       (and (not (null? str))
            (string->zi str)))
     (string-split fanqies "\n"))
