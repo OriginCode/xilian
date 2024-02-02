@@ -1,5 +1,6 @@
 #lang racket
 
+;; zi struct consists of zi: 被切字, upper: 反切上字, and lower: 反切下字
 (struct zi (zi upper lower))
 
 (define/contract (zi->string zi)
@@ -7,6 +8,7 @@
   (string-append (zi-zi zi) " " (zi-upper zi) (zi-lower zi))
   )
 
+;; string? "X XX" e.g. "東 德紅" -> zi struct
 (define/contract (string->zi fanqie)
   (-> string? zi?)
   (let ([cols (string-split fanqie)])
@@ -15,7 +17,7 @@
         (substring (cadr cols) 1 2))
     ))
 
-; To be used to parse a multi-line file
+;; To be used to parse a multi-line file
 (define/contract (string->zis fanqies)
   (-> string? (listof zi?))
   (filter-map
