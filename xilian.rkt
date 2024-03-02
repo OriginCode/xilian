@@ -24,7 +24,7 @@
       (hash)
       spellerzis)
      (λ (_ val) val))
-  ))
+    ))
 
 ;; Requires a preprocessed list of classes (most likely the result from tongyong)
 (define/contract (diyong-huyong classes #:upper? upper)
@@ -95,5 +95,12 @@
 ;; 㟅 五東
 ;; 檧 蘇公
 ;; "))
-;; 
+;;
 ;; (map (λ (zis) (map zi->string zis)) (xilian zis #:upper? #f))
+
+(provide
+ (contract-out
+  [xilian (-> (listof zi?) #:upper? boolean? (listof (listof zi?)))]
+  [tongyong (-> (listof zi?) #:upper? boolean? (listof (listof zi?)))]
+  [diyong-huyong (-> (listof (listof zi?)) #:upper? boolean? (listof (listof zi?)))]
+  ))
