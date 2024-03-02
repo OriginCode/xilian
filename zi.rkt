@@ -21,16 +21,16 @@
 (define/contract (string->zis fanqies)
   (-> string? (listof zi?))
   (filter-map
-    (λ (str)
-      (and (not (null? str))
-           (string->zi str)))
-    (string-split fanqies "\n"))
+   (λ (str)
+     (and (not (null? str))
+          (string->zi str)))
+   (string-split fanqies "\n"))
   )
 
 (provide
-  (contract-out
-    [struct zi ((zi string?) (upper string?) (lower string?))]
-    [zi->string (-> zi? string?)]
-    [string->zi (-> string? zi?)]
-    [string->zis (-> string? (listof zi?))]
-    ))
+ (contract-out
+  [struct zi ((zi string?) (upper string?) (lower string?))]
+  [zi->string (-> zi? string?)]
+  [string->zi (-> string? zi?)]
+  [string->zis (-> string? (listof zi?))]
+  ))
